@@ -12,16 +12,33 @@
 #import "TodoCell.h"
 #import "AddTodoViewController.h"
 
-@interface MasterViewController () <AddTodoViewControllerProtocol>
-
-@property NSString *setNewTitle;
-@property NSString *setNewBody;
-@property NSNumber *setNewPriorityNumber;
-@property BOOL setNewIsCompleted;
+@interface MasterViewController () <AddTodoViewControllerProtocol, TodoCellProtocol>
 
 @end
 
 @implementation MasterViewController
+
+- (void)swipedCell:(TodoCell *)cell{
+    
+    
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
+    NSIndexPath *ip = [self.tableView indexPathForCell:cell];
+    
+    Todo *swipedTodo = [[self fetchedResultsController] objectAtIndexPath:ip];
+    swipedTodo.isCompleted = @YES;
+    
+    NSError *error = nil;
+    if (![context save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+
+    
+    [self.tableView reloadData];
+}
 
 - (void)pressedButtonSaveTitle:(NSString *)title body:(NSString *)body priorityNumber:(NSNumber *)priorityNumber andIsCompleted:(BOOL)isCompleted{
     
@@ -32,8 +49,6 @@
     newTodo.title = title;
     newTodo.body = body;
     newTodo.priorityNumber = priorityNumber;
-    newTodo.isCompleted = 0;
-    
     
     NSError *error = nil;
     if (![context save:&error]) {
@@ -98,10 +113,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TodoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 //    [self configureCell:cell atIndexPath:indexPath];
+    
+    cell.delegate = self;
+    
     Todo *todo = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.titleLabel.text = todo.title;
     cell.bodyLabel.text = todo.body;
     cell.priorityNumber.text = [NSString stringWithFormat:@"Priority: %@", todo.priorityNumber];
+    
+    if(todo.isCompleted){
+        NSMutableAttributedString *cutStringBody = [[NSMutableAttributedString alloc] initWithString:todo.body];
+        [cutStringBody addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [cutStringBody length])];
+        
+        NSMutableAttributedString *cutStringTitle = [[NSMutableAttributedString alloc] initWithString:todo.title];
+        [cutStringTitle addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [cutStringTitle length])];
+        
+        [cell.titleLabel setAttributedText:cutStringTitle];
+        [cell.bodyLabel setAttributedText:cutStringBody];
+    }
     
     return cell;
 }
@@ -126,9 +155,11 @@
     }
 }
 //
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+- (void)configureCell:(TodoCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Todo *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.titleLabel.text = [object valueForKey:@"title"];
+    cell.bodyLabel.text = [object valueForKey:@"body"];
+    cell.priorityNumber.text = [NSString stringWithFormat:@"%@", [object valueForKey:@"priorityNumber"]];
 }
 
 #pragma mark - Fetched results controller
@@ -220,7 +251,7 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 /*

@@ -10,6 +10,7 @@
         <scene sceneID="pY4-Hu-kfo">
             <objects>
                 <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -19,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="-630"/>
+            <point key="canvasLocation" x="345" y="-630"/>
         </scene>
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
@@ -29,53 +30,56 @@
                         <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
                         <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="svH-Pt-448">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority Number: 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCH-OD-B2z">
-                                <rect key="frame" x="170" y="64" width="150" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="fl3-Fu-d9S"/>
-                                    <constraint firstAttribute="width" constant="150" id="iSs-Ih-2PG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="a4Y-1f-g2E">
-                                <rect key="frame" x="27" y="187" width="265" height="194"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="194" id="ol2-yI-vZe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shw-8S-MPL">
-                                <rect key="frame" x="114" y="113" width="92" height="66"/>
+                                <rect key="frame" x="114" y="121" width="92" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="nNQ-bY-YOT"/>
                                     <constraint firstAttribute="height" constant="66" id="w2u-bD-jNn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="a4Y-1f-g2E">
+                                <rect key="frame" x="36" y="187" width="248" height="194"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="194" id="ol2-yI-vZe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority Number: 1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCH-OD-B2z">
+                                <rect key="frame" x="144" y="64" width="175.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="fl3-Fu-d9S"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="iSs-Ih-2PG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="a4Y-1f-g2E" firstAttribute="top" secondItem="Shw-8S-MPL" secondAttribute="bottom" constant="8" id="D5o-ER-Ash"/>
+                            <constraint firstItem="a4Y-1f-g2E" firstAttribute="top" secondItem="Shw-8S-MPL" secondAttribute="bottom" id="D5o-ER-Ash"/>
                             <constraint firstItem="a4Y-1f-g2E" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="G5l-ib-FTc"/>
-                            <constraint firstItem="VCH-OD-B2z" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="ghn-yT-fZR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="a4Y-1f-g2E" secondAttribute="trailing" constant="20" id="HIq-y1-tRh"/>
+                            <constraint firstItem="a4Y-1f-g2E" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" constant="20" id="UKf-Kf-ArV"/>
                             <constraint firstItem="Shw-8S-MPL" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="poG-T7-01D"/>
+                            <constraint firstItem="VCH-OD-B2z" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="ppO-3M-sdl"/>
                             <constraint firstItem="a4Y-1f-g2E" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="rtu-FD-k83"/>
-                            <constraint firstAttribute="trailing" secondItem="VCH-OD-B2z" secondAttribute="trailing" id="soJ-Hp-Off"/>
+                            <constraint firstAttribute="trailing" secondItem="VCH-OD-B2z" secondAttribute="trailing" id="tCY-ci-wPe"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="a4Y-1f-g2E" id="xEn-ra-aqo"/>
                         <outlet property="priorityNumberLabel" destination="VCH-OD-B2z" id="Vzl-gl-dIq"/>
@@ -84,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1065" y="-630"/>
+            <point key="canvasLocation" x="1072" y="-630"/>
         </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">

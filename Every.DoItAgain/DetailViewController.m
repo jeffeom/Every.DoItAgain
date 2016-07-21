@@ -30,7 +30,7 @@
     if (self.detailItem) {
         self.titleLabel.text = [self.detailItem valueForKey:@"title"];
         self.detailDescriptionLabel.text = [self.detailItem valueForKey:@"body"];
-        self.priorityNumberLabel.text = [NSString stringWithFormat:@"%@", [self.detailItem valueForKey:@"priorityNumber"]];
+        self.priorityNumberLabel.text = [NSString stringWithFormat:@"Priority: %@", [self.detailItem valueForKey:@"priorityNumber"]];
     }
 }
 

@@ -12,13 +12,25 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    self.gr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedCell:)];
+    self.gr.direction = UISwipeGestureRecognizerDirectionRight;
+    [self addGestureRecognizer:self.gr];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)swipedCell: (UISwipeGestureRecognizer *)sender{
+    
+    [self.delegate swipedCell:self];
+    
+    NSLog(@"Swipe recognized");
+    
 }
 
 @end
